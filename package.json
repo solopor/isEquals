@@ -10,7 +10,8 @@
     "dev": "NODE_ENV=development webpack --config webpack.config.js --mode=development -w",
     "build": "NODE_ENV=production webpack --config webpack.config.js --mode=production",
     "test": "npm run lint && nyc ava",
-    "test:watch": "ava --watch"
+    "test:watch": "ava --watch",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
