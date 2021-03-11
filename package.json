@@ -7,9 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development webpack --config webpack.config.js --mode=development -w",
-    "build": "NODE_ENV=production webpack --config webpack.config.js --mode=production"
+    "build": "NODE_ENV=production webpack --config webpack.config.js --mode=production",
+    "test": "npm run lint && nyc ava",
+    "test:watch": "ava --watch"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/solopor/isEquals#readme",
   "devDependencies": {
+    "ava": "^3.15.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -32,8 +34,24 @@
     "eslint": "^7.21.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^4.0.2",
+    "nyc": "^15.1.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^5.24.4",
     "webpack-cli": "^4.5.0"
+  },
+  "ava": {
+    "files": [
+      "test/test.js"
+    ],
+    "verbose": true,
+    "babel": "inherit",
+    "require": [
+      "babel-core/register"
+    ]
+  },
+  "nyc": {
+    "exclude": [
+      "test/*.js"
+    ]
   }
 }
